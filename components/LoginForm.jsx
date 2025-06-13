@@ -1,14 +1,12 @@
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { auth } from "../firebase/firebase-config";
 
 import styles from "./LoginFormStyles";
-
-/*import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "../firebase/firebase-config";*/
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -17,9 +15,7 @@ const LoginForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     if (!isLogin && password !== confirmPassword) {
       alert("Lösenorden matchar inte");
       return;
@@ -31,6 +27,7 @@ const LoginForm = () => {
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
       }
+      setError(""); // Clear errors on success
     } catch {
       setError("Fel användarnamn eller lösenord");
     }
@@ -38,57 +35,54 @@ const LoginForm = () => {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.titel}>{isLogin ? "Logga in" : "Skapa konto"}</Text>
+      <Text style={styles.title}>{isLogin ? "Logga in" : "Skapa konto"}</Text>
 
-    <Text style={styles.label}>E-post</Text>
-    
-          <TextInput
-            style={styles.input}
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
+      <Text style={styles.label}>E-post</Text>
+      <TextInput
+        style={styles.input}
+        keyboardType="email-address"
+        value={email}
+        onChangeText={setEmail}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
 
-        <Text style={styles.label}>Lösenord</Text>
-          <TextInput
-            style={styles.input}
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
+      <Text style={styles.label}>Lösenord</Text>
+      <TextInput
+        style={styles.input}
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
 
-        {!isLogin && (
+      {!isLogin && (
         <>
-        <Text style={styles.label}>Bekräfta lösenord</Text>
-            <TextInput
-              style={styles.input}
-              type="password"
-              value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
-              required
-            />
-          </>
-        )}
+          <Text style={styles.label}>Bekräfta lösenord</Text>
+          <TextInput
+            style={styles.input}
+            secureTextEntry
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
+        </>
+      )}
 
-        {error && <Text style={styles.error}>{error}</Text>}
+      {error !== "" && <Text style={styles.error}>{error}</Text>}
 
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-            <Text style={styles.buttonText}>{isLogin ? "Logga in" : "Registrera"}</Text>
-            </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>{isLogin ? "Logga in" : "Registrera"}</Text>
+      </TouchableOpacity>
 
-        <View style={styles.toggleContainer}>
-          <Text>
-            {isLogin ? "Har du inget konto?" : "Har du redan ett konto?"}
+      <View style={styles.toggleContainer}>
+        <Text>
+          {isLogin ? "Har du inget konto?" : "Har du redan ett konto?"}
+        </Text>
+        <TouchableOpacity onPress={() => setIsLogin(!isLogin)}>
+          <Text style={styles.toggleText}>
+            {isLogin ? "Registrera dig här" : "Logga in här"}
           </Text>
-          <TouchableOpacity type="button" onClick={() => setIsLogin(!isLogin)}
-          >
-            <Text style={styles.toggleText}>
-                {isLogin ? "Registrera dig här" : "Logga in här"}
-            </Text>
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
