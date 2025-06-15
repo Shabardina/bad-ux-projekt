@@ -5,6 +5,8 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
 
 import LoginForm from "@/components/LoginForm";
+/*
+import { Link } from 'expo-router';*/
 
 export default function HomeScreen() {
   return (
@@ -39,5 +41,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  button: {
+    fontSize: 20,
+    textDecorationLine: 'underline',
+    color: '#fff',
   },
 });

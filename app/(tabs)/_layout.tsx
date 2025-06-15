@@ -34,6 +34,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="landningssida"
+        options={{
+          title: 'Landningssida',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="profilsida"
+        options={{
+          title: 'Profilsida',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
@@ -43,3 +57,4 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
