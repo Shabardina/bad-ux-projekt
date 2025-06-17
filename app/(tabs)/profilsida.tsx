@@ -4,25 +4,26 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
         <View style={styles.header}>
-            <Text style={styles.headerText}>Profilsida</Text>
+            <Text style={styles.headerText}>Profil</Text>
         </View>
 
         <View style={styles.body}>
-            <Text style={styles.paragraph}>fdjhfsdfdjdjfdkdsfdfsnfdjdfsjfjdfsfdsdfsdsfhkjfdjfdkjf</Text>
+            <Text style={styles.paragraph}>Här kan du se din profil 🙎‍♀️
+              Du kan redigera din profil bara om du har katter hemma ≽^•⩊•^≼ 
+              Vem gillar inte katter?</Text>
         </View>
     </View>
   );
 }
  
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
   },
   header: {
-    height: 100,
-    backgroundColor: '#007AFF',
+    height: 150,
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
   paragraph: {
     fontSize: 16,
     lineHeight: 24,
-    color: '#333',
+    color: 'white',
+
   },
 });

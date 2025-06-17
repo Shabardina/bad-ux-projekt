@@ -8,7 +8,9 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.body}>
-            <Text style={styles.paragraph}>fdjhfsdfdjdjfdkdsfdfsnfdjdfsjfjdfsfdsdfsdsfhkjfdjfdkjf</Text>
+            <Text style={styles.paragraph}>👋Hej! Du kan använda appen för att chatta med vänner, dela bilder, 
+              meddelanden, dokument och annan information. Du kan känna dig trygg eftersom all din data sparas
+              direkt i appen och hela världen kan få tillgång till den. Säkerhet är viktigt för oss!🔒🔑</Text>
         </View>
     </View>
   );
@@ -18,11 +20,11 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
   },
   header: {
-    height: 100,
-    backgroundColor: '#007AFF',
+    height: 150,
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -38,6 +40,6 @@ const styles = StyleSheet.create({
   paragraph: {
     fontSize: 16,
     lineHeight: 24,
-    color: '#333',
+    color: 'white',
   },
 });

@@ -1,35 +1,59 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 // @ts-ignore
 import Onboarding from 'react-native-onboarding-swiper';
 
-const Simple = () => (
+const SimpleOnboarding = () => (
   <Onboarding
     onDone={() => console.log('done')}
+  
     pages={[
       {
-        backgroundColor: '#fff',
-        image: <Image source={require('../assets/images/slide1.png')} />,
+        backgroundColor: 'black',
+        image: 
+          <Image 
+            source={require('../assets/images/slide1.png')} 
+            style={styles.image}
+          />,
         title: 'Onboarding',
-        subtitle: 'Done with React Native Onboarding Swiper',
-        showSkip: false,
+        subtitle: 'Share your secrets with us!',
+        showSkip: true,
       },
       {
-        backgroundColor: '#fe6e58',
-        image: <Image source={require('../assets/images/slide2.png')} />,
-        title: 'The Title',
-        subtitle: 'This is the subtitle that sumplements the title.',
-        showSkip: false,
+        backgroundColor: 'black',
+        image: 
+          <Image 
+            source={require('../assets/images/slide1.png')}
+            style={styles.image}
+          />,
+        title: 'Onboarding',
+        subtitle: 'Provide your sensitive data!',
+        showSkip: true,
       },
       {
-        backgroundColor: '#999',
-        image: <Image source={require('../assets/images/slide3.png')} />,
-        title: 'Triangle',
+        backgroundColor: 'black',
+        image: 
+          <Image 
+            source={require('../assets/images/slide1.png')} 
+            style={styles.image}
+          />,
+        title: 'Onboarding',
+        color: "black",
         subtitle: "Beautiful, isn't it?",
-        showSkip: false,
+        showSkip: true,
       },
     ]}
   />
 );
 
-export default Simple;
+const styles = StyleSheet.create({
+    image: {
+    marginTop: -60, 
+    width: 300,
+    height: 300,
+    resizeMode: 'contain',
+  },
+  });
+
+export default SimpleOnboarding;
+

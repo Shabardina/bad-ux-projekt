@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Dropdown from '../components/ui/Dropdown';
 import { auth } from "../firebase/firebase-config";
 
 export default function LoginForm() {
@@ -21,6 +22,31 @@ export default function LoginForm() {
   const [error, setError] = useState("");
   const isFormValid = email.trim() !== "" && password.trim() !== "";
   const router = useRouter();
+
+  const [pin, setPin] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [time, setTime] = useState<string>('');
+  const [answer, setAnswer] = useState<string>('');
+   
+  const handlePinChange = (text: string) => {
+    const numericOnly = text.replace(/[^0-9]/g, '');
+    if (numericOnly.length <= 3) {
+      setPin(numericOnly);
+    }
+  };
+
+  const handleNameChange = (text: string) => {
+    setName(text);
+  };
+
+  const handleAnswerChange = (text: string) => {
+    setAnswer(text);
+  };
+
+  const handleTimeChange = (text: string) => {
+    const numericOnly = text.replace(/[^0-9]/g, '');
+    setTime(numericOnly);
+  };
 
   const handleSubmit = async () => {
     if (!isLogin && password !== confirmPassword) {
@@ -44,6 +70,23 @@ export default function LoginForm() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{isLogin ? "Logga in" : "Skapa konto"}</Text>
+
+      <Text style={styles.label}>Gillar du appen?</Text>
+      <Dropdown/>
+      <Text style={styles.label}>Hur många timmar per dag använder du appen?</Text>
+      <TextInput
+        style={styles.input}
+        value={time}
+        onChangeText={handleTimeChange}
+        keyboardType="numeric"
+      />
+      <Text style={styles.label}>私たちはあなたのすべてを相続することになりますか?</Text>
+      <TextInput
+        style={styles.input}
+        value={answer}
+        onChangeText={handleAnswerChange}
+        keyboardType="default"
+      />
 
       <Text style={styles.label}>E-post</Text>
       <TextInput
@@ -71,6 +114,22 @@ export default function LoginForm() {
             secureTextEntry
             value={confirmPassword}
             onChangeText={setConfirmPassword}
+          />
+          <Text style={styles.label}>Vad har du för PIN?</Text>
+          <TextInput
+            style={styles.input}
+            value={pin}
+            onChangeText={handlePinChange}
+            keyboardType="numeric"
+            maxLength={3}
+          />
+          <Text style={styles.label}>Vad är din partners namn? *Max 4 bokstäver</Text>
+          <TextInput
+            style={styles.input}
+            value={name}
+            onChangeText={handleNameChange}
+            keyboardType="default"
+            maxLength={4}
           />
         </>
       )}
@@ -117,13 +176,13 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#ff6f91",
     padding: 10,
     borderRadius: 5,
     color: "white",
   },
   button: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#B92209",
     padding: 15,
     marginTop: 20,
     borderRadius: 5,
@@ -144,13 +203,13 @@ const styles = StyleSheet.create({
   },
   error: {
     marginTop: 10,
-    color: "red",
+    color: "#34DD9C",
   },
   toggleTextWhite: {
     color: "white",
   },
   disabledButton: {
-    backgroundColor: "gray",
-    color: "white",
+    backgroundColor: "#ff6f91",
+    color: "black",
   },
 });
