@@ -93,8 +93,6 @@ export default function LoginForm() {
         style={styles.input}
         keyboardType="email-address"
         value={email}
-        // React Native's TextInput använder onChangeText som direkt skickar in sträng-värdet från inputen
-        // till skillnad från web React där du behöver extrahera strängen via event.target.value.
         onChangeText={setEmail}
       />
 
@@ -123,7 +121,7 @@ export default function LoginForm() {
             keyboardType="numeric"
             maxLength={3}
           />
-          <Text style={styles.label}>Vad är din partners namn? *Max 4 bokstäver</Text>
+          <Text style={styles.label}>Vad är din partners namn?</Text>
           <TextInput
             style={styles.input}
             value={name}
