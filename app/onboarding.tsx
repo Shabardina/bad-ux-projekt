@@ -40,12 +40,13 @@ const slides = [
 const Slide = ({ item }: { item: typeof slides[0] }) => {
   return (
     <View style={{ width, flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 250, }}>
-      <Image
-        source={item.image}
-        style={{ height: '195%', width: '100%', resizeMode: 'contain' }}
-      />
+      
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.subtitle}>{item.subtitle}</Text>
+        <Image
+        source={item.image}
+        style={{ height: '190%', width: '100%', resizeMode: 'contain', marginTop: 40 }}
+      />
     </View>
   );
 };
@@ -170,7 +171,7 @@ export default function OnboardingScreen() {
 const styles = StyleSheet.create({
   subtitle: {
     color: COLORS.white,
-    fontSize: 13,
+    fontSize: 18,
     marginTop: 10,
     maxWidth: '70%',
     textAlign: 'center',
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: COLORS.white,
-    fontSize: 22,
+    fontSize: 30,
     fontWeight: 'bold',
     marginTop: 20,
     textAlign: 'center',
@@ -194,7 +195,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
     borderRadius: 5,
-    backgroundColor: '#fff',
+    backgroundColor: 'yellow',
     justifyContent: 'center',
     alignItems: 'center',
   },

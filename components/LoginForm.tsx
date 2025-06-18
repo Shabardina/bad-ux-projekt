@@ -70,7 +70,6 @@ export default function LoginForm() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{isLogin ? "Logga in" : "Skapa konto"}</Text>
-
       <Text style={styles.label}>Gillar du appen?</Text>
       <Dropdown/>
       <Text style={styles.label}>Hur många timmar per dag använder du appen?</Text>
