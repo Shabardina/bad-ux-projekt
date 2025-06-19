@@ -14,24 +14,24 @@ import {
 
 const { width, height } = Dimensions.get('window');
 
-const COLORS = { primary: '#282534', white: '#fff' };
+const COLORS = { primary: '#282534', white: '#fff', black: 'black' };
 
 const slides = [
   {
     id: '1',
-    image: require('../assets/images/slide1.png'),
+    image: require('../assets/images/banner.png'),
     title: 'Onboarding',
     subtitle: 'Du kan chatta med vänner i vår app!',
   },
   {
     id: '2',
-    image: require('../assets/images/slide1.png'),
+    image: require('../assets/images/slide.png'),
     title: 'Onboarding',
     subtitle: 'Dela dina känsliga uppgifter med oss! ',
   },
   {
     id: '3',
-    image: require('../assets/images/slide1.png'),
+    image: require('../assets/images/slide0.png'),
     title: 'Onboarding',
     subtitle: 'Det är så enkelt: du får kommunikation med vänner, vi får att som du har!',
   },
@@ -45,7 +45,7 @@ const Slide = ({ item }: { item: typeof slides[0] }) => {
         <Text style={styles.subtitle}>{item.subtitle}</Text>
         <Image
         source={item.image}
-        style={{ height: '190%', width: '100%', resizeMode: 'contain', marginTop: 40 }}
+        style={{ height: '180%', width: '100%', resizeMode: 'contain', marginTop: 40 }}
       />
     </View>
   );
@@ -54,7 +54,7 @@ const Slide = ({ item }: { item: typeof slides[0] }) => {
 export default function OnboardingScreen() {
   const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
   const ref = React.useRef<FlatList>(null);
-  const router = useRouter(); 
+  const router = useRouter();
 
   const updateCurrentSlideIndex = (e: any) => {
     const contentOffsetX = e.nativeEvent.contentOffset.x;
@@ -150,7 +150,7 @@ export default function OnboardingScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.black }}>
       <StatusBar backgroundColor={COLORS.primary} />
       <FlatList
         ref={ref}
