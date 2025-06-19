@@ -1,12 +1,8 @@
-import { Image } from 'expo-image';
-import { StyleSheet } from 'react-native';
-
+import LoginForm from "@/components/LoginForm";
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
-
-import LoginForm from "@/components/LoginForm";
-/*
-import { Link } from 'expo-router';*/
+import { Image } from 'expo-image';
+import { StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
   return (
@@ -37,8 +33,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   banner: {
-    height: 222,
-    width: 400,
+    height: 210,
+    width: 350,
     bottom: -20,
     left: 0,
     position: 'absolute',

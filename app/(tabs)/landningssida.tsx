@@ -8,9 +8,11 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.body}>
-            <Text style={styles.paragraph}>👋Hej! Du kan använda appen för att chatta med vänner, dela bilder, 
-              meddelanden, dokument och annan information. Du kan känna dig trygg eftersom all din data sparas
-              direkt i appen och hela världen kan få tillgång till den. Säkerhet är viktigt för oss!🔒🔑</Text>
+          <Text style={styles.paragraph}>
+            👋Hej! Du kan använda appen för att chatta med vänner, dela bilder, 
+            meddelanden, dokument och annan information. Du kan känna dig trygg eftersom all din data sparas
+            direkt i appen och hela världen kan få tillgång till den. Säkerhet är viktigt för oss!🔒🔑
+          </Text>
         </View>
     </View>
   );

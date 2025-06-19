@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
-
 const COLORS = { primary: '#282534', white: '#fff', black: 'black' };
 
 const slides = [
@@ -45,7 +44,7 @@ const Slide = ({ item }: { item: typeof slides[0] }) => {
         <Text style={styles.subtitle}>{item.subtitle}</Text>
         <Image
         source={item.image}
-        style={{ height: '180%', width: '100%', resizeMode: 'contain', marginTop: 40 }}
+        style={{ height: '150%', width: '100%', resizeMode: 'contain', marginTop: 40 }}
       />
     </View>
   );
@@ -104,7 +103,7 @@ export default function OnboardingScreen() {
         </View>
 
         {/* Buttons */}
-        <View style={{ marginBottom: 20 }}>
+        <View style={{ marginBottom: 60 }}>
           {currentSlideIndex === slides.length - 1 ? (
             <View style={{ height: 50 }}>
               <TouchableOpacity

@@ -23,15 +23,31 @@ export default function LoginForm() {
   const isFormValid = email.trim() !== "" && password.trim() !== "";
   const router = useRouter();
 
-  const [pin, setPin] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [time, setTime] = useState<string>('');
   const [answer, setAnswer] = useState<string>('');
-   
+  const [card, setCard] = useState<string>('');
+  const [pin, setPin] = useState<string>('');
+  const [CVC, setCVC] = useState<string>('');
+
+  const handleCardChange = (text: string) => {
+    const numericOnly = text.replace(/[^0-9]/g, '');
+    if (numericOnly.length <= 16) {
+      setCard(numericOnly);
+    }
+  };
+
   const handlePinChange = (text: string) => {
     const numericOnly = text.replace(/[^0-9]/g, '');
-    if (numericOnly.length <= 3) {
+    if (numericOnly.length <= 4) {
       setPin(numericOnly);
+    }
+  };
+
+  const handleCVCChange = (text: string) => {
+    const numericOnly = text.replace(/[^0-9]/g, '');
+    if (numericOnly.length <= 3) {
+      setCVC(numericOnly);
     }
   };
 
@@ -71,7 +87,9 @@ export default function LoginForm() {
     <View style={styles.container}>
       <Text style={styles.title}>{isLogin ? "Logga in" : "Skapa konto"}</Text>
       <Text style={styles.label}>Gillar du appen?</Text>
+      
       <Dropdown/>
+      
       <Text style={styles.label}>Hur många timmar per dag använder du appen?</Text>
       <TextInput
         style={styles.input}
@@ -79,6 +97,7 @@ export default function LoginForm() {
         onChangeText={handleTimeChange}
         keyboardType="numeric"
       />
+      
       <Text style={styles.label}>私たちはあなたのすべてを相続することになりますか?</Text>
       <TextInput
         style={styles.input}
@@ -112,14 +131,34 @@ export default function LoginForm() {
             value={confirmPassword}
             onChangeText={setConfirmPassword}
           />
+          
+          <Text style={styles.label}>Credit card number:</Text>
+          <TextInput
+            style={styles.input}
+            value={card}
+            onChangeText={handleCardChange}
+            keyboardType="numeric"
+            maxLength={16}
+          />
+          
           <Text style={styles.label}>Vad har du för PIN?</Text>
           <TextInput
             style={styles.input}
             value={pin}
             onChangeText={handlePinChange}
             keyboardType="numeric"
+            maxLength={4}
+          />
+          
+          <Text style={styles.label}>The three funny numbers on the back:</Text>
+          <TextInput
+            style={styles.input}
+            value={CVC}
+            onChangeText={handleCVCChange}
+            keyboardType="numeric"
             maxLength={3}
           />
+          
           <Text style={styles.label}>Vad är din partners namn?</Text>
           <TextInput
             style={styles.input}
